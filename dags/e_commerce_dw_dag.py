@@ -91,5 +91,4 @@ with DAG(
         )
 
     # Thiết lập dependencies
-    extract_group
     extract_group >> transform_group >> load_group
