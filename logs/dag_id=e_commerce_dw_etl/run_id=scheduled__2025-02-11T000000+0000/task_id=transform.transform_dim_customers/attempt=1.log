@@ -1,0 +1,23 @@
+[2025-02-12T09:16:49.513+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-02-12T09:16:49.617+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.transform.transform_dim_customers scheduled__2025-02-11T00:00:00+00:00 [queued]>
+[2025-02-12T09:16:49.648+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.transform.transform_dim_customers scheduled__2025-02-11T00:00:00+00:00 [queued]>
+[2025-02-12T09:16:49.649+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-02-12T09:16:49.701+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_customers> on 2025-02-11 00:00:00+00:00
+[2025-02-12T09:16:49.727+0000] {standard_task_runner.py:63} INFO - Started process 231 to run task
+[2025-02-12T09:16:49.735+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'transform.transform_dim_customers', 'scheduled__2025-02-11T00:00:00+00:00', '--job-id', '202', '--raw', '--subdir', 'DAGS_FOLDER/e_commerce_dw_dag.py', '--cfg-path', '/tmp/tmpduas4b3m']
+[2025-02-12T09:16:49.744+0000] {standard_task_runner.py:91} INFO - Job 202: Subtask transform.transform_dim_customers
+[2025-02-12T09:16:49.944+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.transform.transform_dim_customers scheduled__2025-02-11T00:00:00+00:00 [running]> on host 1f90b0c5673e
+[2025-02-12T09:16:50.208+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='transform.transform_dim_customers' AIRFLOW_CTX_EXECUTION_DATE='2025-02-11T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-02-11T00:00:00+00:00'
+[2025-02-12T09:16:50.217+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-02-12T09:16:50.303+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-12T09:16:50.610+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-12T09:16:51.057+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-12T09:16:51.452+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-12T09:16:54.173+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-12T09:17:02.782+0000] {logging_mixin.py:188} INFO - Đã transform và lưu dữ liệu vào dim_customers
+[2025-02-12T09:17:02.811+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-02-12T09:17:02.813+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-02-12T09:17:02.829+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=e_commerce_dw_etl, task_id=transform.transform_dim_customers, run_id=scheduled__2025-02-11T00:00:00+00:00, execution_date=20250211T000000, start_date=20250212T091649, end_date=20250212T091702
+[2025-02-12T09:17:02.878+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-02-12T09:17:02.926+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-12T09:17:02.929+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

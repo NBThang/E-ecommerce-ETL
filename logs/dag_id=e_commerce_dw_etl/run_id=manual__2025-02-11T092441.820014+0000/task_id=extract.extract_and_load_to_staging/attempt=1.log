@@ -1,0 +1,55 @@
+[2025-02-11T09:24:42.426+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-02-11T09:24:42.466+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-11T09:24:41.820014+00:00 [queued]>
+[2025-02-11T09:24:42.478+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-11T09:24:41.820014+00:00 [queued]>
+[2025-02-11T09:24:42.479+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-02-11T09:24:42.495+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-02-11 09:24:41.820014+00:00
+[2025-02-11T09:24:42.500+0000] {standard_task_runner.py:63} INFO - Started process 3027 to run task
+[2025-02-11T09:24:42.504+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'extract.extract_and_load_to_staging', 'manual__2025-02-11T09:24:41.820014+00:00', '--job-id', '194', '--raw', '--subdir', 'DAGS_FOLDER/e_commerce_dw_dag.py', '--cfg-path', '/tmp/tmpd_nn0q56']
+[2025-02-11T09:24:42.506+0000] {standard_task_runner.py:91} INFO - Job 194: Subtask extract.extract_and_load_to_staging
+[2025-02-11T09:24:42.563+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-11T09:24:41.820014+00:00 [running]> on host 1f90b0c5673e
+[2025-02-11T09:24:42.643+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-02-11T09:24:41.820014+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-11T09:24:41.820014+00:00'
+[2025-02-11T09:24:42.644+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-02-11T09:24:42.662+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:24:42.676+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:24:42.726+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:24:42.740+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:24:42.752+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:24:42.861+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng product_category_name_translation từ MySQL vào PostgreSQL staging
+[2025-02-11T09:24:42.868+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:24:42.875+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:24:45.603+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:07.969+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng geolocation từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:07.976+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:25:07.985+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:25:08.036+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:08.186+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng sellers từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:08.192+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:25:08.198+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:25:08.492+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:10.335+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng customers từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:10.342+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:25:10.350+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:25:10.536+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:11.776+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng products từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:11.782+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:25:11.789+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:25:12.671+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:16.254+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng orders từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:16.261+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:25:16.269+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:25:16.882+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:21.601+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng order_items từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:21.615+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:25:21.628+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:25:22.371+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:25.767+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng order_payments từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:25.778+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-11T09:25:25.790+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-11T09:25:26.775+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-11T09:25:32.130+0000] {logging_mixin.py:188} INFO - Đã trích xuất và lưu bảng order_reviews từ MySQL vào PostgreSQL staging
+[2025-02-11T09:25:32.149+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-02-11T09:25:32.151+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-02-11T09:25:32.162+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=e_commerce_dw_etl, task_id=extract.extract_and_load_to_staging, run_id=manual__2025-02-11T09:24:41.820014+00:00, execution_date=20250211T092441, start_date=20250211T092442, end_date=20250211T092532
+[2025-02-11T09:25:32.223+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-02-11T09:25:32.241+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-11T09:25:32.245+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

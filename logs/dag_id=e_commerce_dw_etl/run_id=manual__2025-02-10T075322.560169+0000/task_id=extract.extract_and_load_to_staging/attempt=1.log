@@ -1,0 +1,39 @@
+[2025-02-10T07:53:23.714+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-02-10T07:53:23.770+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T07:53:22.560169+00:00 [queued]>
+[2025-02-10T07:53:23.785+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T07:53:22.560169+00:00 [queued]>
+[2025-02-10T07:53:23.785+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-02-10T07:53:23.800+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-02-10 07:53:22.560169+00:00
+[2025-02-10T07:53:23.805+0000] {standard_task_runner.py:63} INFO - Started process 235 to run task
+[2025-02-10T07:53:23.809+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'extract.extract_and_load_to_staging', 'manual__2025-02-10T07:53:22.560169+00:00', '--job-id', '163', '--raw', '--subdir', 'DAGS_FOLDER/e_commerce_dw_dag.py', '--cfg-path', '/tmp/tmps7_vvks3']
+[2025-02-10T07:53:23.813+0000] {standard_task_runner.py:91} INFO - Job 163: Subtask extract.extract_and_load_to_staging
+[2025-02-10T07:53:23.881+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T07:53:22.560169+00:00 [running]> on host dbe40b263d82
+[2025-02-10T07:53:24.173+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-02-10T07:53:22.560169+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-10T07:53:22.560169+00:00'
+[2025-02-10T07:53:24.175+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-02-10T07:53:24.250+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2025-02-10T07:53:24.261+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-02-10T07:53:24.262+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/e_commerce_dw_dag.py", line 48, in get_data
+    connection = mysql_hook.get_conn()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/mysql/hooks/mysql.py", line 196, in get_conn
+    return MySQLdb.connect(**conn_config)
+  File "/home/airflow/.local/lib/python3.10/site-packages/MySQLdb/__init__.py", line 121, in Connect
+    return Connection(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/MySQLdb/connections.py", line 195, in __init__
+    super().__init__(*args, **kwargs2)
+MySQLdb.OperationalError: (1049, "Unknown database 'specific_db'")
+[2025-02-10T07:53:24.277+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=e_commerce_dw_etl, task_id=extract.extract_and_load_to_staging, run_id=manual__2025-02-10T07:53:22.560169+00:00, execution_date=20250210T075322, start_date=20250210T075323, end_date=20250210T075324
+[2025-02-10T07:53:24.305+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 163 for task extract.extract_and_load_to_staging ((1049, "Unknown database 'specific_db'"); 235)
+[2025-02-10T07:53:24.346+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-02-10T07:53:24.371+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-10T07:53:24.374+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

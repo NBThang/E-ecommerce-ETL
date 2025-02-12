@@ -1,0 +1,43 @@
+[2025-02-10T09:36:54.613+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-02-10T09:36:54.687+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T09:36:53.785072+00:00 [queued]>
+[2025-02-10T09:36:54.702+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T09:36:53.785072+00:00 [queued]>
+[2025-02-10T09:36:54.703+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-02-10T09:36:54.718+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-02-10 09:36:53.785072+00:00
+[2025-02-10T09:36:54.723+0000] {standard_task_runner.py:63} INFO - Started process 2301 to run task
+[2025-02-10T09:36:54.726+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'extract.extract_and_load_to_staging', 'manual__2025-02-10T09:36:53.785072+00:00', '--job-id', '178', '--raw', '--subdir', 'DAGS_FOLDER/e_commerce_dw_dag.py', '--cfg-path', '/tmp/tmp2d4iywnl']
+[2025-02-10T09:36:54.728+0000] {standard_task_runner.py:91} INFO - Job 178: Subtask extract.extract_and_load_to_staging
+[2025-02-10T09:36:54.773+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T09:36:53.785072+00:00 [running]> on host 1f90b0c5673e
+[2025-02-10T09:36:54.999+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-02-10T09:36:53.785072+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-10T09:36:53.785072+00:00'
+[2025-02-10T09:36:55.000+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-02-10T09:36:55.017+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-10T09:36:55.031+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-02-10T09:36:55.032+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/extract_data.py", line 57, in test_postgre
+    df = staging_operator.get_data_to_pd(f"SELECT * FROM {table}")
+  File "/opt/airflow/plugins/postgresql_operator.py", line 25, in get_data_to_pd
+    engine = create_engine(conn)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/common/sql/hooks/sql.py", line 262, in get_pandas_df
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/postgres/hooks/postgres.py", line 175, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "host.docker.local" to address: Name or service not known
+
+[2025-02-10T09:36:55.044+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=e_commerce_dw_etl, task_id=extract.extract_and_load_to_staging, run_id=manual__2025-02-10T09:36:53.785072+00:00, execution_date=20250210T093653, start_date=20250210T093654, end_date=20250210T093655
+[2025-02-10T09:36:55.055+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 178 for task extract.extract_and_load_to_staging (could not translate host name "host.docker.local" to address: Name or service not known
+; 2301)
+[2025-02-10T09:36:55.099+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-02-10T09:36:55.119+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-10T09:36:55.123+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

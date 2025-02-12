@@ -1,0 +1,60 @@
+[2025-02-10T09:47:22.971+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-02-10T09:47:23.001+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T09:47:22.289096+00:00 [queued]>
+[2025-02-10T09:47:23.013+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T09:47:22.289096+00:00 [queued]>
+[2025-02-10T09:47:23.014+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-02-10T09:47:23.029+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-02-10 09:47:22.289096+00:00
+[2025-02-10T09:47:23.035+0000] {standard_task_runner.py:63} INFO - Started process 2670 to run task
+[2025-02-10T09:47:23.038+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'extract.extract_and_load_to_staging', 'manual__2025-02-10T09:47:22.289096+00:00', '--job-id', '182', '--raw', '--subdir', 'DAGS_FOLDER/e_commerce_dw_dag.py', '--cfg-path', '/tmp/tmp5rbartj7']
+[2025-02-10T09:47:23.044+0000] {standard_task_runner.py:91} INFO - Job 182: Subtask extract.extract_and_load_to_staging
+[2025-02-10T09:47:23.087+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-02-10T09:47:22.289096+00:00 [running]> on host 1f90b0c5673e
+[2025-02-10T09:47:23.293+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-02-10T09:47:22.289096+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-10T09:47:22.289096+00:00'
+[2025-02-10T09:47:23.294+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-02-10T09:47:23.315+0000] {base.py:84} INFO - Using connection ID 'postgres' for task execution.
+[2025-02-10T09:47:23.382+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/providers/common/sql/hooks/sql.py:263 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2025-02-10T09:47:23.386+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-02-10T09:47:23.386+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/pandas/io/sql.py", line 2018, in execute
+    cur.execute(*args, **kwargs)
+psycopg2.errors.UndefinedTable: relation "test" does not exist
+LINE 1: SELECT * FROM test
+                      ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/extract_data.py", line 57, in test_postgre
+    df = staging_operator.get_data_to_pd(f"SELECT * FROM {table}")
+  File "/opt/airflow/plugins/postgresql_operator.py", line 25, in get_data_to_pd
+    engine = create_engine(conn)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/common/sql/hooks/sql.py", line 263, in get_pandas_df
+    return psql.read_sql(sql, con=conn, params=parameters, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pandas/io/sql.py", line 564, in read_sql
+    return pandas_sql.read_query(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pandas/io/sql.py", line 2078, in read_query
+    cursor = self.execute(*args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pandas/io/sql.py", line 2030, in execute
+    raise ex from exc
+pandas.errors.DatabaseError: Execution failed on sql 'SELECT * FROM test': relation "test" does not exist
+LINE 1: SELECT * FROM test
+                      ^
+
+[2025-02-10T09:47:23.412+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=e_commerce_dw_etl, task_id=extract.extract_and_load_to_staging, run_id=manual__2025-02-10T09:47:22.289096+00:00, execution_date=20250210T094722, start_date=20250210T094723, end_date=20250210T094723
+[2025-02-10T09:47:23.422+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 182 for task extract.extract_and_load_to_staging (Execution failed on sql 'SELECT * FROM test': relation "test" does not exist
+LINE 1: SELECT * FROM test
+                      ^
+; 2670)
+[2025-02-10T09:47:23.453+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-02-10T09:47:23.471+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-10T09:47:23.473+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
